@@ -1,7 +1,7 @@
+import { StatusBar } from 'react-native';
 import { ThemeProvider } from "styled-components/native";
 import theme from "@theme/index";
 import { useFonts, Poppins_400Regular, Poppins_500Medium, Poppins_700Bold } from '@expo-google-fonts/poppins'
-import AppLoading from 'expo-app-loading'
 import { Dashboard } from "@screens/Dashboard";
 
 export default function App() {
@@ -13,11 +13,16 @@ export default function App() {
   })
 
   if (!fontsLoaded) {
-    return <AppLoading />
+    return <></>
   }
 
   return (
     <ThemeProvider theme={theme}>
+      <StatusBar 
+        barStyle='light-content'
+        backgroundColor='transparent'
+        translucent
+      />
       <Dashboard /> 
     </ThemeProvider>
   );
