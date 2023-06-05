@@ -51,6 +51,13 @@ export const UserName = styled.Text`
 
 export const Icon = styled(Feather)`
   color: ${({theme}) => theme.COLORS.SECONDARY};
-  font-size: ${RFValue(24)}px;
-  
+  font-size: ${RFValue(24)}px;  
+`
+
+export const HighlightCards = styled.ScrollView.attrs({
+  horizontal: true,
+  showsHorizontalScrollIndicator: true,
+  contentContainerStyle: {paddingLeft: 24}
+})`
+
 `
