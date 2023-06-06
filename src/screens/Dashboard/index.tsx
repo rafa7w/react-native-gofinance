@@ -1,4 +1,4 @@
-import { Container, Header, UserInfo, Photo, User, UserGreeting, UserName, UserWrapper, Icon, HighlightCards, Transactions, Title, TransactionList } from "./styles";
+import { Container, Header, UserInfo, Photo, User, UserGreeting, UserName, UserWrapper, Icon, HighlightCards, Transactions, Title, TransactionList, LogoutButton } from "./styles";
 
 import { HighlightCard } from "@components/Loading/HighlightCard";
 import { TransactionCard, TransactionCardProps } from "@components/TransactionCard";
@@ -43,7 +43,9 @@ export function Dashboard() {
               <UserName>Rafael</UserName>
             </User>
           </UserInfo>
-          <Icon name='power'/>
+          <LogoutButton onPress={() => {}}>
+            <Icon name='power'/>
+          </LogoutButton>
         </UserWrapper>
       </Header>
 
