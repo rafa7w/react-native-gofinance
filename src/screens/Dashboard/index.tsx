@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Container, Header, UserInfo, Photo, User, UserGreeting, UserName, UserWrapper, Icon, HighlightCards, Transactions, Title, TransactionList, LogoutButton } from "./styles";
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect } from '@react-navigation/native';
 
 import { HighlightCard } from "@components/Loading/HighlightCard";
 import { TransactionCard, TransactionCardProps } from "@components/TransactionCard";
@@ -14,7 +15,7 @@ export type DataListProps = TransactionCardProps & {
 export function Dashboard() {
   const [data, setData] = useState<DataListProps[]>([])
 
-  async function loadTransaction() {
+  async function loadTransactions() {
     const dataKey = '@gofinances:transactions'
     const response = await AsyncStorage.getItem(dataKey)
 
@@ -47,8 +48,15 @@ export function Dashboard() {
   }
 
   useEffect(() => { 
-    loadTransaction()
+    loadTransactions()
+
+    // const dataKey = '@gofinances:transactions'
+    // AsyncStorage.removeItem(dataKey)
   }, [])
+
+  useFocusEffect(useCallback(() => {
+    loadTransactions()
+  }, []))
 
   return (
     <Container>
