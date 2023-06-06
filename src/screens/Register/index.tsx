@@ -1,4 +1,5 @@
-import { Container, Header, Title, Form } from "./styles";
+import { Button } from "@components/Forms/Button";
+import { Container, Header, Title, Form, Fields } from "./styles";
 import { Input } from "@components/Forms/Input";
 
 export function Register() {
@@ -9,11 +10,16 @@ export function Register() {
       </Header>
 
       <Form>
-        <Input 
-          placeholder="Nome"
-        />
-        <Input 
-          placeholder="Senha"
+        <Fields>
+          <Input 
+            placeholder="Nome"
+          />
+          <Input 
+            placeholder="Senha"
+          />
+        </Fields>
+        <Button 
+          title="Enviar"
         />
       </Form>
 
