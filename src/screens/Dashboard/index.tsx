@@ -1,10 +1,29 @@
-import { Container, Header, UserInfo, Photo, User, UserGreeting, UserName, UserWrapper, Icon, HighlightCards, Transactions, Title } from "./styles";
+import { Container, Header, UserInfo, Photo, User, UserGreeting, UserName, UserWrapper, Icon, HighlightCards, Transactions, Title, TransactionsList } from "./styles";
 
 import { HighlightCard } from "@components/Loading/HighlightCard";
 import { TransactionCard } from "@components/TransactionCard";
 
 
 export function Dashboard() {
+  const data = [{
+    title: "Desenvolvimento de sites",
+    amount: "R$ 12.000,00",
+    category: {
+      name: 'Vendas',
+      icon: 'dollar-sign'
+    },
+    date: "13/04/2020"
+  }, {
+    title: "Desenvolvimento de sites",
+    amount: "R$ 12.000,00",
+    category: {
+      name: 'Vendas',
+      icon: 'dollar-sign'
+    },
+    date: "13/04/2020"
+  }]
+
+
   return (
     <Container>
       <Header>
@@ -28,7 +47,16 @@ export function Dashboard() {
 
       <Transactions>
         <Title>Listagem</Title>
-        <TransactionCard />
+        <TransactionsList 
+          data={data}
+          renderItem={({item}) => (
+            <TransactionCard 
+              data={item}
+            />
+          )}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{paddingBottom: }}
+        />
       </Transactions>
     </Container>
   )

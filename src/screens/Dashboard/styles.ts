@@ -81,3 +81,7 @@ export const Title = styled.Text`
   font-family: ${({theme}) => theme.FONTS.REGULAR};
   margin-bottom: 16px;
 `
+
+export const TransactionsList = styled.FlatList`
+  
+`
