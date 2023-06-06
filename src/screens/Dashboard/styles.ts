@@ -10,13 +10,19 @@ export const Container = styled.View`
 export const Header = styled.View`
   width: 100%;
   height: ${RFPercentage(42)}px;
+  
   background-color: ${({theme}) => theme.COLORS.PRIMARY};
+  
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 `
 export const UserWrapper = styled.View`
   width: 100%;
+
   padding: 0 24px;
+  margin-top: ${RFValue(44)}px;
+
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -56,8 +62,10 @@ export const Icon = styled(Feather)`
 
 export const HighlightCards = styled.ScrollView.attrs({
   horizontal: true,
-  showsHorizontalScrollIndicator: true,
+  showsHorizontalScrollIndicator: false,
   contentContainerStyle: {paddingLeft: 24}
 })`
-
+  width: 100%;
+  position: absolute;
+  margin-top: ${RFPercentage(20)}px;
 `
