@@ -1,19 +1,28 @@
 import { useState } from 'react';
-import { Modal } from 'react-native';
+import { Modal, StatusBar } from 'react-native';
 import { Container, Header, Title, Form, Fields, TransactionsType } from "./styles";
+import { useForm } from 'react-hook-form';
 
-import { Input } from "@components/Forms/Input";
+import { InputForm } from '@components/Forms/InputForm';
 import { Button } from "@components/Forms/Button";
 import { TransactionTypeButton } from "@components/Forms/TransactionTypeButton";
 import { CategorySelectButton } from '@components/Forms/CategorySelectButton';
 
 import { CategorySelect } from '@screens/CategorySelect';
 
+type FormData = {
+  name: string;
+  amount: string;
+}
+
 export function Register() {
   const [category, setCategory] = useState({
     key: 'category',
     name: 'Categoria',
   })
+
+  const {control, handleSubmit} = useForm()
+
   const [transactionType, setTransactionType] = useState('')
   const [categoryModalOpen, setCategoryModalOpen] = useState(false)
 
@@ -29,18 +38,37 @@ export function Register() {
     setCategoryModalOpen(false)
   }
 
+  function handleRegister(form: FormData) {
+    const data = {
+      name: form.name,
+      amount: form.amount,
+      transactionType,
+      category: category.key
+    }
+    console.log(data)
+  }
+
   return (
     <Container>
+      <StatusBar 
+        barStyle='light-content'
+        backgroundColor='#5636D3'
+        translucent
+      />
       <Header>
         <Title>Cadastro</Title>
       </Header>
 
       <Form>
         <Fields>
-          <Input 
+          <InputForm
+            name='name'
+            control={control}
             placeholder="Nome"
           />
-          <Input 
+          <InputForm
+            name='amount'
+            control={control}
             placeholder="Preço"
           />
           <TransactionsType>
@@ -65,6 +93,7 @@ export function Register() {
         </Fields>
         <Button 
           title="Enviar"
+          onPress={handleSubmit(handleRegister)}
         />
       </Form>
 
